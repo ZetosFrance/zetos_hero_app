@@ -21,10 +21,18 @@ const preloadImage = (src: string): Promise<void> => {
 export const initProgressiveBackground = () => {
   // Step 1: Initial blur background is set via HTML data-bg attribute
 
-  // Step 2: On DOMContentLoaded, swap to low quality
-  document.addEventListener('DOMContentLoaded', () => {
-    swapBackground('low');
-  });
+  // Step 2: On DOMContentLoaded or immediately if already loaded
+  const switchToLowQuality = () => {
+    preloadImage('/low-bg.svg')
+      .then(() => swapBackground('low'))
+      .catch(error => console.error('Failed to load low quality background:', error));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', switchToLowQuality);
+  } else {
+    switchToLowQuality();
+  }
 
   // Step 3: After app is ready and HD image is loaded, swap to HD
   window.addEventListener('app-ready', async () => {
