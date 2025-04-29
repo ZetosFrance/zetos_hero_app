@@ -4,7 +4,6 @@ import styled, { keyframes } from 'styled-components';
 interface AnimatedNumberProps {
   value: number;
   duration?: number;
-  repeatDelay?: number;
 }
 
 const rollAnimation = keyframes`
@@ -18,28 +17,39 @@ const rollAnimation = keyframes`
   }
 `;
 
-const NumberContainer = styled.span`
+const NumberContainer = styled.div`
   display: inline-block;
   overflow: hidden;
-  height: 1.2em; /* Fixed height to prevent layout shift */
+  height: 1.2em;
+  font-size: 32px;
+  font-weight: ${({ theme }) => theme.typography.fontWeights.bold};
+  position: relative;
+  color: transparent;
+  background-image: ${({ theme }) => theme.colors.fill.gradient};
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1.2;
 `;
 
 const AnimatedSpan = styled.span<{ $duration: number }>`
   display: inline-block;
   animation: ${rollAnimation} ${props => props.$duration}ms ease-out forwards;
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 `;
 
 export const AnimatedNumber = ({ 
   value, 
-  duration = 2000,
-  repeatDelay = 120000 
+  duration = 400 // Shorter duration for multiple rolls
 }: AnimatedNumberProps) => {
-  const [displayNumber, setDisplayNumber] = useState(value);
+  const [displayNumber, setDisplayNumber] = useState(0);
   const [shouldAnimate, setShouldAnimate] = useState(true);
-  const [isRolling, setIsRolling] = useState(false);
+  const [rollCount, setRollCount] = useState(0);
   const startTimeRef = useRef<number | null>(null);
   const animationFrameRef = useRef<number | undefined>(undefined);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -60,7 +70,7 @@ export const AnimatedNumber = ({
   }, []);
 
   useEffect(() => {
-    if (!shouldAnimate) {
+    if (!isInitialMount.current || rollCount >= 5 || !shouldAnimate) {
       setDisplayNumber(value);
       return;
     }
@@ -78,41 +88,37 @@ export const AnimatedNumber = ({
       if (percentage < 1) {
         animationFrameRef.current = requestAnimationFrame(animate);
       } else {
-        setIsRolling(false);
         startTimeRef.current = null;
+        
+        // Schedule next roll if we haven't done 5 yet
+        if (rollCount < 4) {
+          setTimeout(() => {
+            setRollCount(prev => prev + 1);
+            setDisplayNumber(0);
+            requestAnimationFrame(animate);
+          }, 100); // Small delay between rolls
+        } else {
+          setRollCount(5); // Mark as complete
+        }
       }
     };
 
-    const startRolling = () => {
-      setIsRolling(true);
-      setDisplayNumber(0);
-      startTimeRef.current = null;
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-
-    // Initial animation
-    startRolling();
-
-    // Set up interval for repeated animation
-    intervalRef.current = setInterval(() => {
-      if (!isRolling) {
-        startRolling();
-      }
-    }, repeatDelay);
+    // Start the animation
+    animationFrameRef.current = requestAnimationFrame(animate);
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    }
 
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
     };
-  }, [value, duration, repeatDelay, shouldAnimate, isRolling]);
+  }, [value, duration, shouldAnimate, rollCount]);
 
   return (
     <NumberContainer>
-      <AnimatedSpan $duration={shouldAnimate ? duration : 0}>
+      <AnimatedSpan $duration={shouldAnimate && rollCount < 5 ? duration : 0}>
         {displayNumber}
       </AnimatedSpan>
     </NumberContainer>

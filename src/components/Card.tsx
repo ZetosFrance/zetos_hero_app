@@ -26,6 +26,11 @@ const CardContainer = styled.div`
     min-width: 320px;
   }
 
+  @media (max-width: 390px) {
+    min-width: 100%;
+    padding: 1rem;
+  }
+
   &:hover {
     border-color: ${({ theme }) => theme.colors.stroke.cyan};
   }
@@ -39,6 +44,10 @@ const CompanyHeader = styled.div`
 
   @media (min-width: 768px) {
     gap: 1rem;
+  }
+
+  @media (max-width: 390px) {
+    gap: 0.5rem;
   }
 `;
 
@@ -61,6 +70,11 @@ const Logo = styled.img`
     height: 32px;
   }
 
+  @media (max-width: 390px) {
+    width: 24px;
+    height: 24px;
+  }
+
   ${LogoLink}:hover & {
     transform: scale(1.1);
   }
@@ -76,11 +90,19 @@ const CompanyName = styled.h3`
   color: ${({ theme }) => theme.colors.fill.white};
   font-size: ${({ theme }) => theme.typography.fontSize.lg};
   margin: 0;
+
+  @media (max-width: 390px) {
+    font-size: ${({ theme }) => theme.typography.fontSize.base};
+  }
 `;
 
 const CompanyCategory = styled.span`
   color: ${({ theme }) => theme.colors.fill.gray};
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
+
+  @media (max-width: 390px) {
+    font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  }
 `;
 
 const MetricRow = styled.div`
@@ -88,16 +110,25 @@ const MetricRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.25rem 0;
 `;
 
 const MetricLabel = styled.span`
   color: ${({ theme }) => theme.colors.fill.gray};
   font-size: ${({ theme }) => theme.typography.fontSize.base};
+
+  @media (max-width: 390px) {
+    font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  }
 `;
 
 const MetricValue = styled.span`
   color: ${({ theme }) => theme.colors.fill.cyan};
   font-size: ${({ theme }) => theme.typography.fontSize.base};
+
+  @media (max-width: 390px) {
+    font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  }
 `;
 
 const ReadStoryButton = styled.a`
@@ -114,6 +145,11 @@ const ReadStoryButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 390px) {
+    padding: 0.5rem;
+    font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  }
 
   &:hover {
     background: ${({ theme }) => theme.colors.stroke.cyanAlpha};

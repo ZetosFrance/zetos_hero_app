@@ -19,15 +19,21 @@ const FooterContainer = styled.footer`
 const FooterContent = styled.div`
   width: 100%;
   max-width: 1200px;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-  justify-items: center;
+`;
 
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3rem;
-    justify-items: start;
+const MainRow = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 `;
 
@@ -35,10 +41,11 @@ const SocialLinks = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
-  justify-content: center;
+  flex: 1;
+  justify-content: flex-start;
 
-  @media (min-width: 768px) {
-    justify-content: flex-start;
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 `;
 
@@ -54,12 +61,14 @@ const SocialIcon = styled.a`
 
 const FooterLinks = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 2rem;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 2;
 
-  @media (min-width: 768px) {
-    align-items: flex-start;
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -68,6 +77,7 @@ const FooterLink = styled(Link)`
   text-decoration: none;
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
   transition: color 0.3s ease;
+  white-space: nowrap;
 
   &:hover {
     color: ${({ theme }) => theme.colors.fill.cyan};
@@ -77,10 +87,11 @@ const FooterLink = styled(Link)`
 const Copyright = styled.div`
   color: ${({ theme }) => theme.colors.fill.gray};
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  text-align: center;
+  flex: 1;
+  text-align: right;
 
-  @media (min-width: 768px) {
-    text-align: right;
+  @media (max-width: 768px) {
+    text-align: center;
   }
 `;
 
@@ -94,6 +105,10 @@ const TalkButton = styled.a`
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  align-self: center;
 
   &:hover {
     background: ${({ theme }) => theme.colors.stroke.cyanAlpha};
@@ -104,29 +119,31 @@ export const Footer = () => {
   return (
     <FooterContainer>
       <FooterContent>
-        <SocialLinks>
-          <SocialIcon href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-linkedin"></i>
-          </SocialIcon>
-          <SocialIcon href="https://x.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-x-twitter"></i>
-          </SocialIcon>
-          <SocialIcon href="https://github.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-github"></i>
-          </SocialIcon>
-          <SocialIcon href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-facebook"></i>
-          </SocialIcon>
-        </SocialLinks>
-        <FooterLinks>
-          <FooterLink to="/terms">Terms & Conditions</FooterLink>
-          <FooterLink to="/disclaimer">Disclaimer</FooterLink>
-          <FooterLink to="/career">Career</FooterLink>
-          <FooterLink to="/privacy">Privacy</FooterLink>
-        </FooterLinks>
-        <Copyright>
-          © {new Date().getFullYear()} All rights reserved
-        </Copyright>
+        <MainRow>
+          <SocialLinks>
+            <SocialIcon href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-linkedin"></i>
+            </SocialIcon>
+            <SocialIcon href="https://x.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-x-twitter"></i>
+            </SocialIcon>
+            <SocialIcon href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-github"></i>
+            </SocialIcon>
+            <SocialIcon href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-facebook"></i>
+            </SocialIcon>
+          </SocialLinks>
+          <FooterLinks>
+            <FooterLink to="/terms">Terms & Conditions</FooterLink>
+            <FooterLink to="/disclaimer">Disclaimer</FooterLink>
+            <FooterLink to="/career">Career</FooterLink>
+            <FooterLink to="/privacy">Privacy</FooterLink>
+          </FooterLinks>
+          <Copyright>
+            © {new Date().getFullYear()} All rights reserved
+          </Copyright>
+        </MainRow>
         <TalkButton 
           href="/support"
           target="_blank"

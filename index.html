@@ -1,49 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-bg="blur">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/avatar.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Critical CSS for background -->
-    <style>
-      :root {
-        --bg-blur: url('/blur-bg.svg');
-        --bg-overlay-dark: rgba(0, 0, 0, 0.85);
-      }
-      
-      html {
-        background-color: var(--bg-overlay-dark);
-        background-image: var(--bg-blur);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        min-height: 100vh;
-        transition: background-image 0.5s ease-in-out;
-      }
-
-      body {
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-
-    <!-- Preload background images with proper MIME types -->
-    <link 
-      rel="preload" 
-      as="image" 
-      href="/blur-bg.svg" 
-      type="image/svg+xml"
-      fetchpriority="high"
-    />
-    <link 
-      rel="preload" 
-      as="image" 
-      href="/low-bg.svg" 
-      type="image/svg+xml"
-    />
+    <!-- Preload background image -->
+    <link rel="preload" href="/hd-bg.png" as="image" type="image/png" />
     
     <!-- Load global styles first -->
     <link rel="stylesheet" href="./src/styles/global.css" />

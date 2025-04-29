@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { theme } from './styles/theme'
@@ -16,6 +15,8 @@ import { MulinkStory } from './pages/MulinkStory'
 import { BozzettoStory } from './pages/BozzettoStory'
 import { UpToMoreStory } from './pages/UpToMoreStory'
 import { CustomerSupport } from './pages/CustomerSupport'
+import { ProgressiveBackground } from './components/ProgressiveBackground'
+import { StickyNav } from './components/StickyNav'
 
 const PageContainer = styled.div`
   width: 100%;
@@ -37,6 +38,10 @@ const MainContent = styled.main`
   @media (min-width: 768px) {
     padding: 4rem 2rem;
   }
+
+  @media (max-width: 390px) {
+    padding: 2rem 0.75rem;
+  }
 `;
 
 const CardsSection = styled.section`
@@ -45,6 +50,10 @@ const CardsSection = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 390px) {
+    gap: 1.5rem;
+  }
 `;
 
 const CardRow = styled.div`
@@ -57,6 +66,10 @@ const CardRow = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
     max-width: 1200px;
+  }
+
+  @media (max-width: 390px) {
+    gap: 1.5rem;
   }
 `;
 
@@ -128,15 +141,17 @@ const companies = [
 ];
 
 function App() {
-  useEffect(() => {
-    // Emit app-ready event when React app is mounted
-    window.dispatchEvent(new Event('app-ready'));
-  }, []);
-
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
+        <ProgressiveBackground
+          lowResUrl="/blur-bg.svg"
+          highResUrl="/hd-bg.png"
+          fallbackColor="#f0f0f0"
+          onError={(error) => console.error('Background loading error:', error)}
+        />
+        <StickyNav />
         <Routes>
           <Route path="/" element={
             <PageContainer>

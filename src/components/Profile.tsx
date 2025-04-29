@@ -9,12 +9,18 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1rem;
 `;
 
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.fill.white};
   font-size: ${({ theme }) => theme.typography.fontSize['2xl']};
   margin-bottom: 1rem;
+  
+  @media (max-width: 390px) {
+    font-size: ${({ theme }) => theme.typography.fontSize.xl};
+    padding: 0 0.5rem;
+  }
 `;
 
 const NumberContainer = styled.div`
@@ -22,21 +28,36 @@ const NumberContainer = styled.div`
   justify-content: center;
   gap: 2rem;
   margin: 2rem 0;
+  flex-wrap: wrap;
+  
+  @media (max-width: 390px) {
+    gap: 1rem;
+  }
 `;
 
 const NumberBox = styled.div`
   background: ${({ theme }) => theme.colors.fill.darkAlpha};
   border: 1px solid ${({ theme }) => theme.colors.stroke.cyan};
   border-radius: 8px;
-  padding: 1rem;
-  min-width: 100px;
-  overflow: hidden;
+  padding: 1.5rem 2rem;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(8px);
+  
+  @media (max-width: 390px) {
+    min-width: 140px;
+    padding: 1.25rem 1.5rem;
+  }
 `;
 
 const Label = styled.div`
   color: ${({ theme }) => theme.colors.fill.gray};
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: ${({ theme }) => theme.typography.fontWeights.regular};
 `;
 
 const AvatarContainer = styled.div`
@@ -78,12 +99,17 @@ const LetsTalkButton = styled.button`
   &:hover {
     opacity: 0.9;
   }
+  
+  @media (max-width: 390px) {
+    max-width: 180px;
+    padding: 0.75rem 1.5rem;
+  }
 `;
 
 export const Profile = () => {
   return (
     <ProfileContainer>
-      <AvatarContainer>
+      <AvatarContainer data-avatar-container>
         <Avatar src="/avatar.svg" alt="Profile" />
       </AvatarContainer>
       <Title>Tech-Visionary & Serial Entrepreneur</Title>
