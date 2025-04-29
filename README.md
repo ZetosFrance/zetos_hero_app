@@ -52,3 +52,4 @@ export default tseslint.config({
   },
 })
 ```
+// this is the modification from Adam CHINS (Developer)
