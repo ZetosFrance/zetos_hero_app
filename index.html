@@ -9,13 +9,12 @@
     <style>
       :root {
         --bg-blur: url('/blur-bg.svg');
-        --bg-low: url('/low-bg.svg');
-        --bg-hd: url('/hd-bg.png');
         --bg-overlay-dark: rgba(0, 0, 0, 0.85);
       }
       
       html {
         background-color: var(--bg-overlay-dark);
+        background-image: var(--bg-blur);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -24,8 +23,10 @@
         transition: background-image 0.5s ease-in-out;
       }
 
-      html[data-bg="blur"] {
-        background-image: var(--bg-blur);
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
       }
     </style>
 
@@ -35,6 +36,7 @@
       as="image" 
       href="/blur-bg.svg" 
       type="image/svg+xml"
+      fetchpriority="high"
     />
     <link 
       rel="preload" 
