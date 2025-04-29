@@ -1,0 +1,36 @@
+/* Preload background image */
+:root {
+  /* Theme colors */
+  --bg-overlay-light: rgba(255, 255, 255, 0.85);
+  --bg-overlay-dark: rgba(0, 0, 0, 0.85);
+}
+
+/* Base background styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  background-image: url('/hd-bg.png');
+  background-color: var(--bg-overlay-dark);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Light/Dark mode support */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--bg-overlay-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--bg-overlay-dark);
+  }
+} 

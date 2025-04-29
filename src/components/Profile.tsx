@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { AnimatedNumber } from './AnimatedNumber';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -8,20 +9,17 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1rem;
 `;
 
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.fill.white};
   font-size: ${({ theme }) => theme.typography.fontSize['2xl']};
   margin-bottom: 1rem;
-`;
-
-const rollNumbers = keyframes`
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
+  
+  @media (max-width: 390px) {
+    font-size: ${({ theme }) => theme.typography.fontSize.xl};
+    padding: 0 0.5rem;
   }
 `;
 
@@ -30,28 +28,36 @@ const NumberContainer = styled.div`
   justify-content: center;
   gap: 2rem;
   margin: 2rem 0;
+  flex-wrap: wrap;
+  
+  @media (max-width: 390px) {
+    gap: 1rem;
+  }
 `;
 
 const NumberBox = styled.div`
   background: ${({ theme }) => theme.colors.fill.darkAlpha};
   border: 1px solid ${({ theme }) => theme.colors.stroke.cyan};
   border-radius: 8px;
-  padding: 1rem;
-  min-width: 100px;
-  overflow: hidden;
-`;
-
-const Number = styled.div`
-  color: ${({ theme }) => theme.colors.fill.cyan};
-  font-size: ${({ theme }) => theme.typography.fontSize['3xl']};
-  font-weight: bold;
-  animation: ${rollNumbers} 2s ease-out;
+  padding: 1.5rem 2rem;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(8px);
+  
+  @media (max-width: 390px) {
+    min-width: 140px;
+    padding: 1.25rem 1.5rem;
+  }
 `;
 
 const Label = styled.div`
   color: ${({ theme }) => theme.colors.fill.gray};
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: ${({ theme }) => theme.typography.fontWeights.regular};
 `;
 
 const AvatarContainer = styled.div`
@@ -93,26 +99,31 @@ const LetsTalkButton = styled.button`
   &:hover {
     opacity: 0.9;
   }
+  
+  @media (max-width: 390px) {
+    max-width: 180px;
+    padding: 0.75rem 1.5rem;
+  }
 `;
 
 export const Profile = () => {
   return (
     <ProfileContainer>
-      <AvatarContainer>
+      <AvatarContainer data-avatar-container>
         <Avatar src="/avatar.svg" alt="Profile" />
       </AvatarContainer>
       <Title>Tech-Visionary & Serial Entrepreneur</Title>
       <NumberContainer>
         <NumberBox>
-          <Number>25</Number>
+          <AnimatedNumber value={25} />
           <Label>Years of Experience</Label>
         </NumberBox>
         <NumberBox>
-          <Number>10</Number>
+          <AnimatedNumber value={10} />
           <Label>Ventures</Label>
         </NumberBox>
         <NumberBox>
-          <Number>5</Number>
+          <AnimatedNumber value={5} />
           <Label>Patents</Label>
         </NumberBox>
       </NumberContainer>

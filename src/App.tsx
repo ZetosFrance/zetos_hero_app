@@ -15,6 +15,7 @@ import { MulinkStory } from './pages/MulinkStory'
 import { BozzettoStory } from './pages/BozzettoStory'
 import { UpToMoreStory } from './pages/UpToMoreStory'
 import { CustomerSupport } from './pages/CustomerSupport'
+
 import { StickyNav } from './components/StickyNav'
 
 const BackgroundWrapper = styled.div`
@@ -77,6 +78,10 @@ const MainContent = styled.main`
   @media (min-width: 768px) {
     padding: 4rem 0;
   }
+
+  @media (max-width: 390px) {
+    padding: 2rem 0.75rem;
+  }
 `;
 
 const CardsSection = styled.section`
@@ -99,6 +104,10 @@ const CardRow = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, minmax(320px, 1fr));
     max-width: 1200px;
+  }
+
+  @media (max-width: 390px) {
+    gap: 1.5rem;
   }
 `;
 
@@ -215,6 +224,7 @@ function App() {
             <Route path="/support" element={<CustomerSupport />} />
           </Routes>
         </AppWrapper>
+
       </ThemeProvider>
     </Router>
   )
