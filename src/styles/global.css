@@ -1,0 +1,47 @@
+:root {
+  /* Background image variables */
+  --bg-blur: url('/blur-bg.svg');
+  --bg-low: url('/low-bg.svg');
+  --bg-hd: url('/hd-bg.png');
+
+  /* Theme colors */
+  --bg-overlay-light: rgba(255, 255, 255, 0.85);
+  --bg-overlay-dark: rgba(0, 0, 0, 0.85);
+}
+
+/* Progressive background loading states */
+html[data-bg="blur"] {
+  background-image: var(--bg-blur);
+}
+
+html[data-bg="low"] {
+  background-image: var(--bg-low);
+}
+
+html[data-bg="hd"] {
+  background-image: var(--bg-hd);
+}
+
+/* Common background properties */
+html {
+  background-color: var(--bg-overlay-dark); /* Default dark theme */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* Light/Dark mode support */
+@media (prefers-color-scheme: light) {
+  html {
+    background-color: var(--bg-overlay-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: var(--bg-overlay-dark);
+  }
+} 

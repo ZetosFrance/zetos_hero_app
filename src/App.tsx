@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { theme } from './styles/theme'
@@ -127,6 +128,11 @@ const companies = [
 ];
 
 function App() {
+  useEffect(() => {
+    // Emit app-ready event when React app is mounted
+    window.dispatchEvent(new Event('app-ready'));
+  }, []);
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
