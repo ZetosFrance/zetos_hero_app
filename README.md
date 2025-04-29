@@ -1,58 +1,107 @@
-# React + TypeScript + Vite
+# Zetos Hero App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application showcasing company profiles with a beautiful, responsive design and an immersive background.
 
-Currently, two official plugins are available:
+## Recent Updates
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Background Implementation
+- Implemented full-screen HD background using `hd-bg.png`
+- Optimized background rendering for different screen sizes and resolutions
+- Added proper mobile viewport handling
+- Improved performance with hardware acceleration and image rendering optimizations
 
-## Expanding the ESLint configuration
+### Layout Improvements
+- Centered all page content with proper hierarchy
+- Implemented responsive grid system for company cards
+- Added proper spacing and alignment throughout the application
+- Optimized layout for both desktop and mobile views
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Styling Enhancements
+- Updated global styles for better consistency
+- Improved typography with centered text alignment
+- Enhanced component styling with proper z-index management
+- Added smooth transitions and animations
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Card/
+│   ├── Footer/
+│   ├── Profile/
+│   └── StickyNav/
+├── pages/
+│   ├── ChintecStory/
+│   ├── AsutexStory/
+│   └── ...
+├── styles/
+│   ├── GlobalStyles.ts
+│   ├── theme.ts
+│   └── styled.d.ts
+└── App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Technology Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React 18
+- TypeScript
+- Styled Components
+- Vite
+- React Router DOM
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Development Guidelines
+
+### Styling
+- Use styled-components for component styling
+- Follow the theme configuration in `src/styles/theme.ts`
+- Maintain responsive design principles
+- Use proper z-index layering as defined in the theme
+
+### Components
+- Keep components modular and reusable
+- Follow TypeScript type definitions
+- Implement proper prop validation
+- Maintain accessibility standards
+
+### Performance
+- Optimize images before adding to `/public`
+- Use proper lazy loading where appropriate
+- Implement proper cleanup in components
+- Follow React best practices for performance
+
+## Deployment
+
+The application is configured for deployment using Vite's build system:
+
+```bash
+npm run build
 ```
-// this is the modification from Adam CHINS (Developer)
-// actually the push profile was WRONG, it's been done under account of DEV_LEAD.
-// Because I didn't save the doc yet.
+
+## Contributing
+
+1. Create a feature branch from `dev_lead`
+2. Make your changes
+3. Test thoroughly
+4. Create a pull request to `dev_lead`
+
+## License
+
+Private - All rights reserved
+
+---
+Last updated: 2024
+Contact: dev_lead@zetos.fr
 
