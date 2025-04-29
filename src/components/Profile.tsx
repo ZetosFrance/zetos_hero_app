@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { AnimatedNumber } from './AnimatedNumber';
 
 const ProfileContainer = styled.div`
   width: 100%;
@@ -16,15 +17,6 @@ const Title = styled.h1`
   margin-bottom: 1rem;
 `;
 
-const rollNumbers = keyframes`
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-`;
-
 const NumberContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -39,13 +31,6 @@ const NumberBox = styled.div`
   padding: 1rem;
   min-width: 100px;
   overflow: hidden;
-`;
-
-const Number = styled.div`
-  color: ${({ theme }) => theme.colors.fill.cyan};
-  font-size: ${({ theme }) => theme.typography.fontSize['3xl']};
-  font-weight: bold;
-  animation: ${rollNumbers} 2s ease-out;
 `;
 
 const Label = styled.div`
@@ -104,15 +89,15 @@ export const Profile = () => {
       <Title>Tech-Visionary & Serial Entrepreneur</Title>
       <NumberContainer>
         <NumberBox>
-          <Number>25</Number>
+          <AnimatedNumber value={25} />
           <Label>Years of Experience</Label>
         </NumberBox>
         <NumberBox>
-          <Number>10</Number>
+          <AnimatedNumber value={10} />
           <Label>Ventures</Label>
         </NumberBox>
         <NumberBox>
-          <Number>5</Number>
+          <AnimatedNumber value={5} />
           <Label>Patents</Label>
         </NumberBox>
       </NumberContainer>
