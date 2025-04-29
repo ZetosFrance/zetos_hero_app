@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 interface AnimatedNumberProps {
@@ -29,32 +29,30 @@ const AnimatedSpan = styled.span<{ $duration: number }>`
 
 export const AnimatedNumber = ({ end, duration = 2000 }: AnimatedNumberProps) => {
   const [displayNumber, setDisplayNumber] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const startTimeRef = useRef<number | null>(null);
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    setIsAnimating(true);
-    let startTime: number;
-    let animationFrame: number;
-
     const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
+      if (!startTimeRef.current) {
+        startTimeRef.current = timestamp;
+      }
+
+      const progress = timestamp - startTimeRef.current;
       const percentage = Math.min(progress / duration, 1);
       
       setDisplayNumber(Math.floor(end * percentage));
 
-      if (progress < duration) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setIsAnimating(false);
+      if (percentage < 1) {
+        animationFrameRef.current = requestAnimationFrame(animate);
       }
     };
 
-    animationFrame = requestAnimationFrame(animate);
+    animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
     };
   }, [end, duration]);

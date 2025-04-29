@@ -105,15 +105,15 @@ export const Profile = () => {
       <NumberContainer>
         <NumberBox>
           <Number>25</Number>
-          <Label>Companies</Label>
+          <Label>Years of Experience</Label>
         </NumberBox>
         <NumberBox>
           <Number>10</Number>
-          <Label>Countries</Label>
+          <Label>Ventures</Label>
         </NumberBox>
         <NumberBox>
           <Number>5</Number>
-          <Label>Industries</Label>
+          <Label>Patents</Label>
         </NumberBox>
       </NumberContainer>
       <a 

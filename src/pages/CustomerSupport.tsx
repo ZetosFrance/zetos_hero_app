@@ -10,14 +10,13 @@ const SupportContainer = styled.div`
   padding: 2rem;
 `;
 
-const ChatContainer = styled.div`
+const ContentContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
   background: ${({ theme }) => theme.colors.fill.darkAlpha};
   border: 1px solid ${({ theme }) => theme.colors.stroke.cyan};
   border-radius: 8px;
   padding: 2rem;
-  min-height: 80vh;
 `;
 
 const Header = styled.div`
@@ -46,114 +45,97 @@ const HeaderText = styled.div`
   }
 `;
 
-const QuickQuestions = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+const FAQSection = styled.div`
+  margin-top: 2rem;
 `;
 
-const QuestionButton = styled.button`
-  background: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.stroke.cyan};
+const QuestionList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+`;
+
+const QuestionLink = styled.a`
   color: ${({ theme }) => theme.colors.fill.cyan};
-  padding: 1rem;
-  border-radius: 4px;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0;
+  
   &:hover {
-    background: ${({ theme }) => theme.colors.fill.darkAlpha};
+    text-decoration: underline;
   }
 `;
 
-const ChatArea = styled.div`
-  min-height: 400px;
-  background: ${({ theme }) => theme.colors.fill.dark};
-  border-radius: 4px;
+const Answer = styled.div`
+  margin: 1rem 0 2rem;
   padding: 1rem;
-  margin-bottom: 1rem;
-`;
-
-const InputArea = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  background: ${({ theme }) => theme.colors.fill.dark};
-  border: 1px solid ${({ theme }) => theme.colors.stroke.gray};
-  color: ${({ theme }) => theme.colors.fill.white};
-  padding: 1rem;
+  background: ${({ theme }) => theme.colors.fill.darkAlpha};
   border-radius: 4px;
-  font-size: ${({ theme }) => theme.typography.fontSize.base};
-
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.stroke.cyan};
-  }
-`;
-
-const SendButton = styled.button`
-  background: ${({ theme }) => theme.colors.fill.cyan};
-  color: ${({ theme }) => theme.colors.fill.dark};
-  border: none;
-  padding: 0 2rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    opacity: 0.9;
-  }
+  color: ${({ theme }) => theme.colors.fill.gray};
 `;
 
 export const CustomerSupport = () => {
   useEffect(() => {
-    updateDocumentHead('Customer Support - Zetos', '/favicon.ico');
+    updateDocumentHead('Zetos Support', '/avatar.svg');
   }, []);
 
-  const commonQuestions = [
-    "How can I start a project with Zetos?",
-    "What industries do you specialize in?",
-    "What's your typical project timeline?",
-    "How do you ensure project quality?"
+  const faq = [
+    {
+      id: 'project-start',
+      q: 'How can I start a project with Zetos?',
+      a: 'Starting a project with Zetos is simple. Contact us through the "Let\'s Talk" button or email us at contact@zetos.fr. Our team will schedule a consultation to discuss your needs and create a tailored solution.'
+    },
+    {
+      id: 'industries',
+      q: 'What industries do you specialize in?',
+      a: 'Zetos has expertise across multiple industries including Technology, Healthcare, Finance, Manufacturing, and Chemical. Our diverse portfolio demonstrates our ability to adapt and innovate in any sector.'
+    },
+    {
+      id: 'timeline',
+      q: 'What\'s your typical project timeline?',
+      a: 'Project timelines vary based on scope and complexity. Typically, small projects take 2-3 months, while larger enterprise solutions may take 6-12 months. We provide detailed timelines during initial consultations.'
+    },
+    {
+      id: 'quality',
+      q: 'How do you ensure project quality?',
+      a: 'We maintain high quality through rigorous testing, code reviews, and continuous integration practices. Our team follows industry best practices and uses modern tools to ensure reliable, scalable solutions.'
+    },
+    {
+      id: 'support',
+      q: 'What kind of support do you provide?',
+      a: 'We offer 24/7 technical support for critical issues, regular maintenance updates, and ongoing consultation for future improvements. Our support team is always ready to assist you.'
+    }
   ];
 
   return (
     <SupportContainer>
-      <ChatContainer>
+      <ContentContainer>
         <Header>
-          <HeaderIcon src="/company-logos/zetos.svg" alt="Zetos Support" />
+          <HeaderIcon src="/avatar.svg" alt="Zetos Support" />
           <HeaderText>
-            <h1>Welcome to Zetos Support</h1>
-            <p>Our team is here to help you 24/7</p>
+            <h1>Zetos Support</h1>
+            <p>Find answers to common questions below</p>
           </HeaderText>
         </Header>
 
-        <QuickQuestions>
-          <h2>Common Questions</h2>
-          {commonQuestions.map((question, index) => (
-            <QuestionButton key={index}>
-              {question}
-            </QuestionButton>
+        <FAQSection>
+          <h2>Frequently Asked Questions</h2>
+          <QuestionList>
+            {faq.map(({ id, q }) => (
+              <li key={id}>
+                <QuestionLink href={`#${id}`}>{q}</QuestionLink>
+              </li>
+            ))}
+          </QuestionList>
+
+          {faq.map(({ id, q, a }) => (
+            <div key={id} id={id}>
+              <h3>{q}</h3>
+              <Answer>{a}</Answer>
+            </div>
           ))}
-        </QuickQuestions>
-
-        <ChatArea>
-          {/* Chat messages will be rendered here */}
-        </ChatArea>
-
-        <InputArea>
-          <Input 
-            type="text" 
-            placeholder="Type your message here..."
-          />
-          <SendButton>Send</SendButton>
-        </InputArea>
-      </ChatContainer>
+        </FAQSection>
+      </ContentContainer>
     </SupportContainer>
   );
 }; 

@@ -114,7 +114,7 @@ const companies = [
     category: 'Chemical',
     metric: 'Revenue',
     metricValue: '$200M',
-    url: 'www.bozzetto.com'
+    url: 'www.bozzetto-group.com'
   },
   {
     logo: '/company-logos/uptomore.svg',
