@@ -18,7 +18,7 @@ export const AsutexStory = () => {
       category="Textile Innovation"
     >
       <p>
-        ASUTEX, established in 2017, represents a groundbreaking fusion of traditional textile craftsmanship and cutting-edge technology. Founded by textile engineer Dr. James Wong and sustainable fashion pioneer Lisa Chen, the company has revolutionized the textile industry through their innovative approach to sustainable fabric production.
+        ASUTEX, established in 1987, represents a groundbreaking fusion of traditional textile craftsmanship and cutting-edge technology. Founded by textile engineer Dr. James Wong and sustainable fashion pioneer Lisa Chen, the company has revolutionized the textile industry through their innovative approach to sustainable fabric production.
       </p>
 
       <h2>Breakthrough Technology</h2>

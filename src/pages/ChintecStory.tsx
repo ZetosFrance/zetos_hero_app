@@ -18,7 +18,7 @@ export const ChintecStory = () => {
       category="Technology & Innovation"
     >
       <p>
-        CHINTEC emerged from a small garage startup in 2018 to become one of the most innovative AI-driven manufacturing solutions providers in Asia. Founded by Dr. Sarah Chen, a former robotics engineer, the company's journey began with a vision to revolutionize traditional manufacturing processes through artificial intelligence and automation.
+        CHINTEC emerged from a small garage startup in 2008 to become one of the most innovative AI-driven manufacturing solutions providers in Asia. Founded by Dr. Sarah Chen, a former robotics engineer, the company's journey began with a vision to revolutionize traditional manufacturing processes through artificial intelligence and automation.
       </p>
 
       <h2>The Innovation Journey</h2>

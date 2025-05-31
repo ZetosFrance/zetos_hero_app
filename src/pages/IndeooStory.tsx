@@ -18,7 +18,7 @@ export const IndeooStory = () => {
       category="Software Producer"
     >
       <p>
-        INDEOO was founded in 2021 with a clear mission: to revolutionize how companies manage and collaborate with freelance talent. Born from the challenges of the modern gig economy, INDEOO's platform brings structure, efficiency, and professionalism to the freelancer management ecosystem.
+        INDEOO was founded in 2025 with a clear mission: to revolutionize how companies manage and collaborate with freelance talent. Born from the challenges of the modern gig economy, INDEOO's platform brings structure, efficiency, and professionalism to the freelancer management ecosystem.
       </p>
 
       <h2>Revolutionary Platform</h2>

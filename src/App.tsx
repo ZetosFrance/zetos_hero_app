@@ -116,31 +116,31 @@ const companies = [
     logo: '/company-logos/chintec.svg',
     name: 'CHINTEC',
     category: 'IT Network',
-    metric: 'Revenue',
-    metricValue: '$3M',
+    metric: 'Valuation',
+    metricValue: '$5M',
     url: 'www.chintec.net'
   },
   {
     logo: '/company-logos/asutex.svg',
     name: 'ASUTEX',
     category: 'Chemical',
-    metric: 'Revenue',
-    metricValue: '$500M',
+    metric: 'Valuation',
+    metricValue: '$100M',
     url: 'www.asutex.com'
   },
   {
     logo: '/company-logos/meeriad.svg',
     name: 'MEERIAD',
     category: 'Mental Health',
-    metric: 'Revenue',
-    metricValue: '$2M',
+    metric: 'Valuation',
+    metricValue: '$5M',
     url: 'www.meeriad.com'
   },
   {
     logo: '/company-logos/zetos.svg',
     name: 'ZETOS',
     category: 'Development Workshop',
-    metric: 'AUM',
+    metric: 'Valuation',
     metricValue: '$100M',
     url: 'www.zetos.fr'
   },
@@ -148,7 +148,7 @@ const companies = [
     logo: '/company-logos/indeoo.svg',
     name: 'INDEOO',
     category: 'Software Producer',
-    metric: 'Revenue',
+    metric: 'Valuation',
     metricValue: '$1M',
     url: 'www.indeoo.com'
   },
@@ -156,24 +156,24 @@ const companies = [
     logo: '/company-logos/mulink.svg',
     name: 'MULINK',
     category: 'Media Marketing',
-    metric: 'Revenue',
-    metricValue: '$1M',
+    metric: 'Valuation',
+    metricValue: '$2M',
     url: 'www.mulink.link'
   },
   {
     logo: '/company-logos/bozzetto.svg',
     name: 'BOZZETTO',
     category: 'Chemical',
-    metric: 'Revenue',
-    metricValue: '$200M',
+    metric: 'Canada Listed',
+    metricValue: '',
     url: 'www.bozzetto-group.com'
   },
   {
     logo: '/company-logos/uptomore.svg',
     name: 'UpToMore',
     category: 'Fintech',
-    metric: 'Revenue',
-    metricValue: '$5M',
+    metric: 'Valuation',
+    metricValue: '$10M',
     url: 'www.uptomore.com'
   }
 ];

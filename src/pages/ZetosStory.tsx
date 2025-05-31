@@ -18,7 +18,7 @@ export const ZetosStory = () => {
       category="Development Workshop"
     >
       <p>
-        ZETOS emerged as a visionary AI-driven development workshop in 2020, bringing together world-class talent to serve both innovative startups and Fortune 500 companies. Founded by a team of seasoned tech entrepreneurs and AI specialists, ZETOS has established itself as a bridge between cutting-edge technology and practical business solutions.
+        ZETOS emerged as a visionary AI-driven development workshop in 2024, bringing together world-class talent to serve both innovative startups and Fortune 500 companies. Founded by a team of seasoned tech entrepreneurs and AI specialists, ZETOS has established itself as a bridge between cutting-edge technology and practical business solutions.
       </p>
 
       <h2>Innovation Approach</h2>

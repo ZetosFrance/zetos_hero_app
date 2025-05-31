@@ -18,7 +18,7 @@ export const MulinkStory = () => {
       category="Media Marketing"
     >
       <p>
-        MULINK burst onto the music scene in 2020 as a revolutionary force in digital music distribution. Founded by music industry veterans and social media experts, the company has redefined how artists connect with audiences through its innovative influencer-driven distribution model.
+        MULINK burst onto the music scene in 2025 as a revolutionary force in digital music distribution. Founded by music industry veterans and social media experts, the company has redefined how artists connect with audiences through its innovative influencer-driven distribution model.
       </p>
 
       <h2>Disruptive Innovation</h2>
